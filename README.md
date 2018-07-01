@@ -1,27 +1,19 @@
+[![Build Status](https://travis-ci.com/annaboyatyuk/17-bearer-authorization.svg?branch=master)](https://travis-ci.com/annaboyatyuk/17-bearer-authorization)
+
+
 ![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) 17: Bearer Auth
 ===
 
-## Submission Instructions
-  * Follow the lab submission instructions in the reference folder 
+## Links
+* PR https://github.com/annaboyatyuk/17-bearer-authorization/pull/1
+* Heroku  https://lab17bearerauthorization401.herokuapp.com/
+* Travis https://travis-ci.com/annaboyatyuk/17-bearer-authorization/builds
 
-## Learning Objectives  
-* students will be able to create bearer authentication middleware
-* students will be able to utilize their bearer authentication middleware in their route structures
-* students will be able to test against authenticated routes
 
-## Requirements
 
-## Description
-* create a new branch and use the same forked repository from lab 15
-* create a bearer auth middleware module (feel free to use the one from lecture as a reference point)
-* create a new resource that has at least three properties
-  * this resource must have a property of `userID` that references the `_id` of the user that created the resource
-  * the `userID` property can only be set from an `_id` found using your bearer auth middleware module
-* as always, use the **npm** `debug` module to log function calls that are used within your application
-* using the express `Router`, create routes for doing **RESTFUL CRUD** operations against your resource
 
-## Server Endpoints
-### Incorporate the authentication and authorization model, routes and middleware into your express server, putting `auth` in front of every API route, ensuring they all require a login for access.
+
+
 
 ### `/api/resource-name`
 * `POST` request
