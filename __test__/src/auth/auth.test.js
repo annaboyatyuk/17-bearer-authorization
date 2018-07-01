@@ -286,12 +286,12 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(() => {
             return mockRequest
               .put(`${coffeeUrl}/fakeID`)
-              .set('Authorization', 'Bearer ' + token)
+              .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send({roast: 'new roast', coffee: 'coffee'})
               .then(res => {
                 expect(res.statusCode).toBe(404);
