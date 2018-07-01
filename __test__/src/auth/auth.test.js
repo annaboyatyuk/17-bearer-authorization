@@ -124,7 +124,7 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(response => {
             expect(response.body.coffee).toBe('coffee');
