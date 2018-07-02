@@ -16,7 +16,7 @@ import {
 
 const mockRequest = supertest(server);
 
-jest.setTimeout(600000);
+jest.setTimeout(60000);
 
 const mockgoose = new Mockgoose(mongoose);
 
@@ -136,7 +136,7 @@ describe('authorization on model', () => {
   it('POST 401 if no token provided', () => {
     return mockRequest
       .post(coffeeUrl)
-      .set('Authorization', 'Bearer ' + token)
+      .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
       .send(coffeeModel)
       .then(response => {
         expect(response.statusCode).toBe(401);
@@ -151,7 +151,7 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send({})
           .then(response => {
             expect(response.statusCode).toBe(400);
@@ -167,12 +167,12 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(() => {
             return mockRequest
               .get(coffeeUrl)
-              .set('Authorization', 'Bearer ' + token)
+              .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .then(response => {
                 expect(response.body[0].coffee).toBe('coffee');
                 expect(response.statusCode).toBe(200);
@@ -197,12 +197,12 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(() => {
             return mockRequest
               .get(`${coffeeUrl}/fakeID`)
-              .set('Authorization', 'Bearer ' + token)
+              .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .then(response => {
                 expect(response.statusCode).toBe(404);
               });
