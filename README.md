@@ -12,9 +12,6 @@
 
 
 
-
-
-
 ### `/api/resource-name`
 * `POST` request
 * pass data as stringifed JSON in the body of a post request to create a new resource

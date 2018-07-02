@@ -7,14 +7,10 @@ import jwt from 'jsonwebtoken';
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  // email: {type: String},
+  email: {type: String, unique: false},
 });
 
 userSchema.pre('save', function(next) {
-  /* gotta encrypt the has here
-  bcrypt library takes in   bcrypt.hash(text, rounds);
-  bcrypt.compare
-  */
 
   bcrypt.hash(this.password, 10)
     .then(hashedPassword => {
@@ -47,7 +43,7 @@ userSchema.methods.comparePassword = function(password) {
 };
 
 userSchema.methods.generateToken = function() {
-  return jwt.sign({id:this._id}, process.env.APP_SECRET || 'changeit');
+  return jwt.sign({id:this._id}, process.env.APP_SECRET || 'secret');
 };
 
 export default mongoose.model('users', userSchema);
