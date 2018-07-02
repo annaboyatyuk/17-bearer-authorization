@@ -128,6 +128,7 @@ describe('authorization on model', () => {
           .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(response => {
+            console.log(response.text);
             expect(response.body.coffee).toBe('coffee');
             expect(response.statusCode).toBe(200);
           });
@@ -140,6 +141,7 @@ describe('authorization on model', () => {
       .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
       .send(coffeeModel)
       .then(response => {
+        console.log(response.text);
         expect(response.statusCode).toBe(401);
       });
   });
@@ -155,6 +157,7 @@ describe('authorization on model', () => {
           .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send({})
           .then(response => {
+            console.log(response.text);
             expect(response.statusCode).toBe(400);
           });
       });
@@ -175,6 +178,7 @@ describe('authorization on model', () => {
               .get(coffeeUrl)
               .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .then(response => {
+                console.log(response.text);
                 expect(response.body[0].coffee).toBe('coffee');
                 expect(response.statusCode).toBe(200);
               });
@@ -205,6 +209,7 @@ describe('authorization on model', () => {
               .get(`${coffeeUrl}/fakeID`)
               .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .then(response => {
+                console.log(response.text);
                 expect(response.statusCode).toBe(404);
               });
           });
@@ -228,6 +233,7 @@ describe('authorization on model', () => {
               .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send({roast: 'new roast', coffee: 'coffee'})
               .then(res => {
+                console.log(response.text);
                 expect(res.body.roast).toBe('new roast');
                 expect(response.statusCode).toBe(200);
               });
@@ -251,6 +257,7 @@ describe('authorization on model', () => {
               // .set('Authorization', 'Bearer ' + token)
               .send({roast: 'new roast', coffee: 'coffee'})
               .then(res => {
+                console.log(response.text);
                 expect(res.statusCode).toBe(401);
               });
           });
@@ -273,6 +280,7 @@ describe('authorization on model', () => {
               .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send('')
               .then(res => {
+                console.log(response.text);
                 expect(res.statusCode).toBe(400);
               });
           });
@@ -295,6 +303,7 @@ describe('authorization on model', () => {
               .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send({roast: 'new roast', coffee: 'coffee'})
               .then(res => {
+                console.log(response.text);
                 expect(res.statusCode).toBe(404);
               });
           });
