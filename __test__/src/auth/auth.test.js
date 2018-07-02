@@ -16,7 +16,7 @@ import {
 
 const mockRequest = supertest(server);
 
-jest.setTimeout(60000);
+jest.setTimeout(600000);
 
 const mockgoose = new Mockgoose(mongoose);
 
