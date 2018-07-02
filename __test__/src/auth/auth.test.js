@@ -1,6 +1,7 @@
 'use strict';
 
 require('dotenv').config();
+require('babel-register');
 
 import {
   Mockgoose,
@@ -219,12 +220,12 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(response => {
             return mockRequest
               .put(`${coffeeUrl}/${response.body._id}`)
-              .set('Authorization', 'Bearer ' + token)
+              .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send({roast: 'new roast', coffee: 'coffee'})
               .then(res => {
                 expect(res.body.roast).toBe('new roast');
@@ -242,7 +243,7 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(response => {
             return mockRequest
@@ -264,12 +265,12 @@ describe('authorization on model', () => {
         token = response.text;
         return mockRequest
           .post(coffeeUrl)
-          .set('Authorization', 'Bearer ' + token)
+          .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
           .send(coffeeModel)
           .then(response => {
             return mockRequest
               .put(`${coffeeUrl}/${response.body._id}`)
-              .set('Authorization', 'Bearer ' + token)
+              .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
               .send('')
               .then(res => {
                 expect(res.statusCode).toBe(400);
