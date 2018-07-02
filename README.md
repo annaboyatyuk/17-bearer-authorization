@@ -5,7 +5,7 @@
 ===
 
 ## Links
-* PR https://github.com/annaboyatyuk/17-bearer-authorization/pull/1
+* PR https://github.com/annaboyatyuk/17-bearer-authorization/pull/2
 * Heroku  https://lab17bearerauthorization401.herokuapp.com/
 * Travis https://travis-ci.com/annaboyatyuk/17-bearer-authorization/builds
 
