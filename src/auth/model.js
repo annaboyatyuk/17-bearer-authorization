@@ -7,14 +7,10 @@ import jwt from 'jsonwebtoken';
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  // email: {type: String},
+  email: {type: String, unique: false},
 });
 
 userSchema.pre('save', function(next) {
-  /* gotta encrypt the has here
-  bcrypt library takes in   bcrypt.hash(text, rounds);
-  bcrypt.compare
-  */
 
   bcrypt.hash(this.password, 10)
     .then(hashedPassword => {
